@@ -1,0 +1,51 @@
+name: pixlift
+description: >-
+  PixLift — on-device AI photo upscaling. Turn low-resolution photos into
+  larger, clearer images with Real-ESRGAN. Everything stays on your device.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  crypto: ^3.0.7
+  # Modern Android photo picker (no storage permission needed).
+  image_picker: ^1.2.3
+  # Save to the media store with modern Android media APIs.
+  gal: ^2.3.3
+  # Native share sheet.
+  share_plus: ^13.3.0
+  # Temporary/app directories.
+  path_provider: ^2.1.6
+  # Lightweight, reliable state management.
+  provider: ^6.1.5+1
+  url_launcher: ^6.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  image_path: assets/brand/pixlift-logo.png
+  min_sdk_android: 24
+  adaptive_icon_background: '#0A1226'
+  adaptive_icon_foreground: assets/brand/pixlift-logo.png
+  adaptive_icon_foreground_inset: 28
+  adaptive_icon_monochrome: assets/brand/pixlift-logo.png
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/model/realesr-general-x4v3.onnx
+    - assets/brand/pixlift-logo.png
+    - THIRD_PARTY_NOTICES.md
