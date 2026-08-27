@@ -59,7 +59,10 @@ internal class OnnxEngine {
                     env, floatBuffer, longArrayOf(1, 3, h.toLong(), w.toLong())
                 ).use { inputTensor ->
                     s.run(mapOf("input" to inputTensor)).use { outputs ->
-                        val outT = outputs.get(0).value as ai.onnxruntime.OnnxTensor
+                        // Result#get already returns the OnnxValue. Calling
+                        // `.value` here materializes a nested float array, so
+                        // casting that value back to OnnxTensor fails at runtime.
+                        val outT = outputs.get(0) as ai.onnxruntime.OnnxTensor
                         val shape = outT.info.shape
                         val modelOutH = shape[2].toInt()
                         val modelOutW = shape[3].toInt()
